@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Life Path Calculator - Discover Your Destiny</title>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    <canvas id="burstCanvas"></canvas>
+
+    <svg class="icon sparkle-spin" viewBox="0 0 120 120" aria-hidden="true">
+      <path d="M60 10 C64 28 72 38 90 42 C72 46 64 56 60 74 C56 56 48 46 30 42 C48 38 56 28 60 10Z" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M28 58 C29.5 64 32.5 67 38 68 C32.5 69 29.5 72 28 78 C26.5 72 23.5 69 18 68 C23.5 67 26.5 64 28 58Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M92 54 C93.5 59 96 61.5 101 62.5 C96 63.5 93.5 66 92 71 C90.5 66 88 63.5 83 62.5 C88 61.5 90.5 59 92 54Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+    <svg class="icon moon" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M62 12 A36 36 0 1 0 62 88 A28 28 0 1 1 62 12Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+    <svg class="icon star-tl" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M50 10 C54 28 62 36 80 40 C62 44 54 52 50 70 C46 52 38 44 20 40 C38 36 46 28 50 10Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+    <svg class="icon star-tr" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M50 10 C54 28 62 36 80 40 C62 44 54 52 50 70 C46 52 38 44 20 40 C38 36 46 28 50 10Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+    <svg class="icon star-br" viewBox="0 0 120 120" aria-hidden="true">
+      <polygon points="60,10 73,44 110,44 80,64 92,106 60,82 28,106 40,64 10,44 47,44" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+
+    <nav class="top-nav">
+        <button class="nav-btn" id="learnBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            The Ancient Art
+        </button>
+    </nav>
+
+    <main class="main-section">
+        <h1 class="main-header">Life Path Calculator</h1>
+        <h3 class="slogan-header">Unlock the secrets of your destiny</h3>
+        <p class="hero-desc">Discover your life path number through ancient numerology wisdom. Your birth date holds the key to understanding your soul's purpose, strengths, and the journey you're meant to walk.</p>
+        <button class="action-btn" id="beginBtn">
+            Begin Your Journey
+            <svg class="btn-icon" viewBox="0 0 120 120" aria-hidden="true">
+              <path d="M60 10 C64 28 72 38 90 42 C72 46 64 56 60 74 C56 56 48 46 30 42 C48 38 56 28 60 10Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M28 58 C29.5 64 32.5 67 38 68 C32.5 69 29.5 72 28 78 C26.5 72 23.5 69 18 68 C23.5 67 26.5 64 28 58Z" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M92 54 C93.5 59 96 61.5 101 62.5 C96 63.5 93.5 66 92 71 C90.5 66 88 63.5 83 62.5 C88 61.5 90.5 59 92 54Z" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+        </button>
+    </main>
+
+    <footer>
+        <div class="stat-item"><p class="stat-number">1-9</p><p class="stat-label">LIFE PATHS</p></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><p class="stat-number">3</p><p class="stat-label">MASTER NUMBERS</p></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><p class="stat-number">∞</p><p class="stat-label">ANCIENT WISDOM</p></div>
+    </footer>
+
+    <!-- CALCULATOR MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-step" id="stepInput">
+                <svg class="modal-sparkle" viewBox="0 0 120 120" aria-hidden="true">
+                  <path d="M60 10 C64 28 72 38 90 42 C72 46 64 56 60 74 C56 56 48 46 30 42 C48 38 56 28 60 10Z" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+                  <path d="M28 58 C29.5 64 32.5 67 38 68 C32.5 69 29.5 72 28 78 C26.5 72 23.5 69 18 68 C23.5 67 26.5 64 28 58Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+                  <path d="M92 54 C93.5 59 96 61.5 101 62.5 C96 63.5 93.5 66 92 71 C90.5 66 88 63.5 83 62.5 C88 61.5 90.5 59 92 54Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+                </svg>
+                <h2 class="modal-title">Enter Your Birth Date</h2>
+                <p class="modal-subtitle">The universe encoded your destiny in the numbers of your birth</p>
+                <div class="date-inputs">
+                    <div class="date-field"><label>Day</label><input type="number" id="inputDay" min="1" max="31" placeholder="DD"/></div>
+                    <div class="date-field"><label>Month</label><input type="number" id="inputMonth" min="1" max="12" placeholder="MM"/></div>
+                    <div class="date-field"><label>Year</label><input type="number" id="inputYear" min="1900" max="2025" placeholder="YYYY"/></div>
+                </div>
+                <p class="input-error" id="inputError"></p>
+                <button class="action-btn modal-calc-btn" id="calculateBtn">Reveal My Number</button>
+            </div>
+
+            <div class="modal-step hidden" id="stepResult">
+                <p class="result-label">Your Life Path Number</p>
+                <div class="result-number-wrap" id="resultWrap">
+                    <div class="result-number" id="resultNumber">7</div>
+                </div>
+                <h2 class="result-title" id="resultTitle"></h2>
+                <p class="result-element" id="resultElement"></p>
+
+                <div class="result-tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="life">Purpose & Path</button>
+                    <button class="tab-btn" data-tab="famous">Famous Souls</button>
+                </div>
+
+                <div class="tab-content" id="tabOverview">
+                    <p class="result-desc" id="resultDesc"></p>
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <span class="result-card-label">✦ Strengths</span>
+                            <div class="result-traits" id="resultStrengths"></div>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-card-label">◈ Challenges</span>
+                            <div class="result-traits challenges" id="resultChallenges"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="tabLife">
+                    <div class="life-section" id="lifeContent"></div>
+                </div>
+
+                <div class="tab-content hidden" id="tabFamous">
+                    <p class="famous-intro">You share your life path with these remarkable souls:</p>
+                    <div class="famous-grid" id="famousGrid"></div>
+                </div>
+
+                <button class="action-btn modal-calc-btn recalc-btn" id="recalcBtn">Calculate Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTORY PAGE -->
+    <div class="history-overlay" id="historyOverlay">
+        <div class="history-panel" id="historyPanel">
+            <button class="history-close" id="historyClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back
+            </button>
+            <div class="history-content">
+                <div class="history-hero">
+                    <svg class="history-emblem" viewBox="0 0 120 120" aria-hidden="true">
+                      <path d="M60 10 C64 28 72 38 90 42 C72 46 64 56 60 74 C56 56 48 46 30 42 C48 38 56 28 60 10Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                      <path d="M28 58 C29.5 64 32.5 67 38 68 C32.5 69 29.5 72 28 78 C26.5 72 23.5 69 18 68 C23.5 67 26.5 64 28 58Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+                      <path d="M92 54 C93.5 59 96 61.5 101 62.5 C96 63.5 93.5 66 92 71 C90.5 66 88 63.5 83 62.5 C88 61.5 90.5 59 92 54Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+                    </svg>
+                    <h1 class="history-main-title">The Ancient Art of Numerology</h1>
+                    <p class="history-subtitle">A 2,500-year journey through numbers, destiny, and the cosmos</p>
+                </div>
+                <div class="history-sections">
+                    <section class="history-section">
+                        <div class="section-number">I</div>
+                        <div class="section-body">
+                            <h2>The Origins — Ancient Civilizations</h2>
+                            <p>Numerology is one of humanity's oldest metaphysical sciences, with roots stretching back over 10,000 years. The earliest known use of numerical symbolism appeared in ancient Babylon and Egypt, where priests and philosophers believed that numbers were not merely tools of counting — they were the fundamental language through which the universe communicated its deepest truths.</p>
+                            <p>The ancient Egyptians used numerological principles in the construction of sacred sites, embedding numerical ratios in the pyramids. The Babylonians developed intricate systems linking numbers to planetary bodies, celestial cycles, and human fate. In ancient China, the I Ching — the Book of Changes — wove numerical symbolism into a complete cosmological framework still studied today.</p>
+                        </div>
+                    </section>
+                    <section class="history-section">
+                        <div class="section-number">II</div>
+                        <div class="section-body">
+                            <h2>Pythagoras — The Father of Modern Numerology</h2>
+                            <p>Around 500 BCE, the Greek philosopher and mathematician Pythagoras established a school in Crotona, Italy, where he taught that the entire universe could be expressed through numbers. His famous declaration — <em>"Numbers rule the universe"</em> — became the cornerstone of Western numerology.</p>
+                            <p>Pythagoras believed that each number 1 through 9 carried a unique vibrational frequency and spiritual meaning. He taught that the human soul chose its birth date before incarnating, encoding its cosmic purpose into the numerical value of that date. His students, the Pythagoreans, were sworn to secrecy and treated numerical knowledge as sacred.</p>
+                            <div class="history-callout">
+                                <span class="callout-symbol">∴</span>
+                                <p>"Numbers are the highest degree of knowledge. It is knowledge itself." — Pythagoras</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="history-section">
+                        <div class="section-number">III</div>
+                        <div class="section-body">
+                            <h2>The Kabbalah &amp; Hebrew Tradition</h2>
+                            <p>The Jewish mystical tradition of Kabbalah developed its own powerful numerical system called Gematria, in which each Hebrew letter corresponds to a number. Kabbalists used Gematria to uncover hidden meanings in sacred texts, believing that words with identical numerical values shared a spiritual connection.</p>
+                            <p>The Kabbalistic Tree of Life — a diagram of ten divine emanations called Sephiroth — places numbers at the heart of creation itself. Each Sephirah represents a numbered aspect of divinity, from Kether (Crown, 1) to Malkuth (Kingdom, 10). This tradition heavily influenced Renaissance esoteric philosophy and the numerological systems that followed.</p>
+                        </div>
+                    </section>
+                    <section class="history-section">
+                        <div class="section-number">IV</div>
+                        <div class="section-body">
+                            <h2>How the Life Path Number Works</h2>
+                            <p>Your Life Path Number is the most significant number in your numerological chart. It is calculated from your complete date of birth by reducing all digits to a single number between 1 and 9 — with the exception of the Master Numbers 11, 22, and 33, which are never reduced further.</p>
+                            <div class="how-it-works">
+                                <div class="step-row"><div class="step-badge">1</div><div><strong>Reduce the day.</strong> If born on the 29th: 2 + 9 = 11. Since 11 is a Master Number, keep it. Otherwise reduce to a single digit.</div></div>
+                                <div class="step-row"><div class="step-badge">2</div><div><strong>Reduce the month.</strong> November (11) stays as 11. December (12): 1 + 2 = 3.</div></div>
+                                <div class="step-row"><div class="step-badge">3</div><div><strong>Reduce the year.</strong> 1990: 1+9+9+0 = 19 → 1+9 = 10 → 1+0 = 1.</div></div>
+                                <div class="step-row"><div class="step-badge">4</div><div><strong>Add the three results.</strong> If the sum is 11, 22, or 33 — that is your Life Path. Otherwise reduce once more.</div></div>
+                            </div>
+                            <div class="history-callout example-callout">
+                                <span class="callout-symbol">✦</span>
+                                <div><strong>Example:</strong> Born October 13, 1994<br>Day: 1+3 = 4 &nbsp;|&nbsp; Month: 10 → 1 &nbsp;|&nbsp; Year: 1+9+9+4 = 23 → 5<br>Life Path: 4+1+5 = <strong>10 → Life Path 1</strong></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="history-section">
+                        <div class="section-number">V</div>
+                        <div class="section-body">
+                            <h2>The Master Numbers — 11, 22 &amp; 33</h2>
+                            <p>Master Numbers are the crown jewels of numerology. People with Master Numbers carry an intensified spiritual mission — greater potential, but also greater challenges.</p>
+                            <div class="master-grid">
+                                <div class="master-card"><div class="master-num">11</div><div class="master-name">The Illuminator</div><p>The most intuitive of all numbers. Life Path 11s are visionaries who bridge the spiritual and physical worlds. They feel everything deeply and are here to inspire through heightened perception.</p></div>
+                                <div class="master-card"><div class="master-num">22</div><div class="master-name">The Master Builder</div><p>Called the most powerful number in existence. Life Path 22s have the rare ability to transform lofty ideals into tangible, lasting structures that benefit all of humanity.</p></div>
+                                <div class="master-card"><div class="master-num">33</div><div class="master-name">The Master Teacher</div><p>The rarest of all Life Paths. Life Path 33s embody pure compassion and are destined to uplift others through teaching, healing, and unconditional love at the highest level.</p></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="history-section">
+                        <div class="section-number">VI</div>
+                        <div class="section-body">
+                            <h2>Frequently Asked Questions</h2>
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is numerology a science or a belief system?<span class="faq-arrow">▾</span></div>
+                                    <div class="faq-a">Numerology sits at the intersection of mathematics, philosophy, and spirituality. It is not a natural science in the empirical sense. It is better understood as a symbolic language and spiritual framework — much like astrology or tarot — that many people find deeply meaningful as a tool for self-reflection and personal growth.</div>
+                                </div>
+                                <div class="faq-item">
+                                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can my Life Path Number change?<span class="faq-arrow">▾</span></div>
+                                    <div class="faq-a">No. Your Life Path Number is derived from your birth date — a fixed, unchangeable fact. It remains constant for your entire life. However, other numbers in your full numerological chart (such as Personal Year Numbers) do change over time as you evolve.</div>
+                                </div>
+                                <div class="faq-item">
+                                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I don't identify with my Life Path Number?<span class="faq-arrow">▾</span></div>
+                                    <div class="faq-a">This is entirely normal, especially at a young age. Numerologists believe that the Life Path Number describes your soul's deepest potential — not necessarily who you are right now, but who you are growing into. Some people don't fully embody their Life Path energy until their 30s or 40s.</div>
+                                </div>
+                                <div class="faq-item">
+                                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who popularised numerology in the modern era?<span class="faq-arrow">▾</span></div>
+                                    <div class="faq-a">The American spiritualist Mrs. L. Dow Balliett is credited with reviving Pythagorean numerology in the early 20th century. Her student Florence Campbell further developed the system. In the 1930s, author Juno Jordan standardised the modern system most practitioners use today, including the concept of Master Numbers.</div>
+                                </div>
+                                <div class="faq-item">
+                                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is the Life Path Number the only important number?<span class="faq-arrow">▾</span></div>
+                                    <div class="faq-a">Far from it. A complete reading includes the Expression Number (from your full birth name), the Soul Urge Number (vowels of your name), the Personality Number (consonants), and Personal Year Numbers that shift annually. The Life Path is considered the most foundational, but the others add important nuance.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="history-cta">
+                    <p>Ready to discover your number?</p>
+                    <button class="action-btn" id="historyCalculateBtn">
+                        Begin Your Journey
+                        <svg class="btn-icon" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 10 C64 28 72 38 90 42 C72 46 64 56 60 74 C56 56 48 46 30 42 C48 38 56 28 60 10Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
