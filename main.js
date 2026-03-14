@@ -1,6 +1,4 @@
-// ═══════════════════════════════════════════════════
 //  STARFIELD
-// ═══════════════════════════════════════════════════
 const canvas = document.getElementById("starfield");
 const ctx    = canvas.getContext("2d");
 let w, h, dpr, stars = [], animId;
@@ -55,9 +53,7 @@ document.addEventListener("visibilitychange", () => {
 });
 resize(); drawStars();
 
-// ═══════════════════════════════════════════════════
 //  BURST CANVAS — per-number animations
-// ═══════════════════════════════════════════════════
 const burst      = document.getElementById("burstCanvas");
 const bCtx       = burst.getContext("2d");
 let bW, bH, bParticles = [], bAnimId = null;
@@ -193,9 +189,7 @@ function triggerBurst(num) {
   setTimeout(() => wrap.classList.remove("burst-active"), 1000);
 }
 
-// ═══════════════════════════════════════════════════
 //  NUMEROLOGY DATA
-// ═══════════════════════════════════════════════════
 const LIFE_PATH_DATA = {
   1: {
     title: "The Leader",
@@ -403,9 +397,7 @@ const LIFE_PATH_DATA = {
   },
 };
 
-// ═══════════════════════════════════════════════════
 //  CALCULATION
-// ═══════════════════════════════════════════════════
 function reduce(n, master = true) {
   while (n > 9) {
     if (master && (n===11||n===22||n===33)) break;
@@ -421,9 +413,7 @@ function calcLifePath(day, month, year) {
   return reduce(d + m + y);
 }
 
-// ═══════════════════════════════════════════════════
 //  UI
-// ═══════════════════════════════════════════════════
 const beginBtn    = document.getElementById("beginBtn");
 const modalOv     = document.getElementById("modalOverlay");
 const modalClose  = document.getElementById("modalClose");
@@ -456,7 +446,7 @@ recalcBtn.addEventListener("click", ()=>{ showStep(stepInput); clearInputs(); se
 modalOv.addEventListener("click", e=>{ if(e.target===modalOv) closeModal(); });
 document.addEventListener("keydown", e=>{ if(e.key==="Escape" && modalOv.classList.contains("visible")) closeModal(); });
 
-// ── TABS ──
+// TABS
 document.querySelectorAll(".tab-btn").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
@@ -469,7 +459,7 @@ document.querySelectorAll(".tab-btn").forEach(btn=>{
 });
 function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
 
-// ── CALCULATE ──
+// CALCULATE
 calcBtn.addEventListener("click", ()=>{
   const day   = parseInt(document.getElementById("inputDay").value);
   const month = parseInt(document.getElementById("inputMonth").value);
@@ -523,9 +513,7 @@ calcBtn.addEventListener("click", ()=>{
   setTimeout(()=>triggerBurst(num), 400);
 });
 
-// ═══════════════════════════════════════════════════
 //  HISTORY PAGE
-// ═══════════════════════════════════════════════════
 const historyOv   = document.getElementById("historyOverlay");
 const learnBtn    = document.getElementById("learnBtn");
 const historyClose= document.getElementById("historyClose");
